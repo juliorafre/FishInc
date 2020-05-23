@@ -7,7 +7,8 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "tail": "npx tailwindcss build ./src/assets/styles/styles.css -o ./src/assets/styles/output.css"
   },
   "keywords": [],
   "author": "",
