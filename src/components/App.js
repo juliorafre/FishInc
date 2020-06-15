@@ -1,13 +1,35 @@
+/* eslint-disable jsx-quotes */
 import React from 'react';
+//Components
+import Layout from './Layout/Layout';
+import Section from './Layout/Section';
+import Fish2 from './Fish/Fish2';
+//BBDD
+import esFishes from '../bbdd/fishes_esES.json';
 
-const App = ({ children }) => {
+const App = () => {
+  console.log(esFishes);
   return (
-    <section
-      id="fish"
-      className="container w-full mx-auto py-16 pl-4 pr-2 bg-fish-background-lightGray flex flex-row flex-wrap justify-start align-middle"
-    >
-      {children}
-    </section>
+    <Layout>
+      <Section>
+        {esFishes.Fishes.map((fish) => {
+          return (
+            <Fish2
+              key={fish.id}
+              type={false}
+              inWater={false}
+              id={fish.id}
+              name={fish.name}
+              price={fish.price}
+              location={fish.location}
+              shadow={fish.shadow}
+              schedule={fish.schedule}
+              seasons={fish.seasons.South[0]}
+            />
+          );
+        })}
+      </Section>
+    </Layout>
   );
 };
 
