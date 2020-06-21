@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f6f7fb !important;
+  width: 100%;
+  height: 100vh;
+}
+
+.inWater {
+  background: url('../static/img/bg/bg_waves.png') no-repeat bottom;
+  background-size: cover;
+}
+
+.fishTile {
+  transition: all ease 0.2s;
+}
+
+.fishTile:hover {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  transition: all ease 0.2s;
+}
