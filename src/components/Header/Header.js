@@ -15,7 +15,11 @@ const Header = ({ hemisphere, handleState, handleLag }) => {
     <>
       <div className="flex flex-row flex-no-wrap justify-start items-center">
         <div className="logo">
-          <img className="w-auto self-start" src={Logo} alt="FishInc." />
+          <img
+            className="w-auto self-start"
+            src="https://res.cloudinary.com/juliorafrecloud/image/upload/v1592716450/FishInc_interface/68a2d55e13f40da1c81d8a06270a8fb8.png"
+            alt="FishInc."
+          />
         </div>
 
         <div className="px-5 opacity-50">

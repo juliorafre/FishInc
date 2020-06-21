@@ -1,6 +1,4 @@
 /* eslint-disable jsx-quotes */
-'use strict';
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -22,14 +20,20 @@ export default function Flags() {
         type="button"
         onClick={() => changeLanguage('en')}
       >
-        <img className="" src={EngFlag} alt="English" />
+        <img
+          src="https://res.cloudinary.com/juliorafrecloud/image/upload/v1592716449/FishInc_interface/f355f2c029d8e036b5251089dfaab75a.png"
+          alt="English"
+        />
       </button>
       <button
         className={`mr-1  ${t('lang') === 'es' ? 'opacity-25' : ''}`}
         type="button"
         onClick={() => changeLanguage('es')}
       >
-        <img src={EspFlag} alt="English" />
+        <img
+          src="https://res.cloudinary.com/juliorafrecloud/image/upload/v1592716450/FishInc_interface/50841d2fc120fbd9aeeff5dfd954c09a.png"
+          alt="Spanish"
+        />
       </button>
     </div>
   );
