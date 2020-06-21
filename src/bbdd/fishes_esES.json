@@ -533,7 +533,7 @@
         "North": [["Jun", "Jul", "Ago", "Sep"]],
         "South": [["Dic", "Ene", "Feb", "Mar"]]
       },
-      "schedule": "09:00-16:00 / 21:00-04:00",
+      "schedule": "09:00-16:00/21:00-04:00",
       "location": "Río",
       "shadow": "Pequeña",
       "imageURL": "https://res.cloudinary.com/juliorafrecloud/image/upload/v1590362447/Fishes/Fish40.png"

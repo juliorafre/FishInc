@@ -1,20 +1,21 @@
-/* eslint-disable comma-dangle */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-quotes */
 import React from 'react';
-
-//images
-import bagBells from '../../assets/static/img/1000Bell.png';
-
 //CSS
-import '../../assets/styles/output.css';
+//import '../../assets/styles/output.css';
 
-//CONSTS
-
-const Fish = ({ id, name, price, location, schedule }) => {
-  const style = {
-    width: 360,
-    height: 100,
-  };
+const Fish = ({
+  id,
+  name,
+  price,
+  location,
+  shadow,
+  schedule,
+  seasons,
+  inWater,
+}) => {
+  const urlFishImage =
+    'https://res.cloudinary.com/juliorafrecloud/image/upload/v1590362447/Fishes/Fish';
 
   const formatLongNames = (name) => {
     if (name.length > 14) {
@@ -23,61 +24,80 @@ const Fish = ({ id, name, price, location, schedule }) => {
     return 'text-lg';
   };
 
-  const formatSchedule = (schedule) => {
+  /* const formatSchedule = (schedule) => {
     if (schedule.indexOf('/') >= 0) {
       console.log(schedule.split('/')[0].trim());
       return schedule.split('/')[0].trim();
     }
     return schedule;
-  };
+  }; */
 
-  console.log('Valor de schedule": ', formatSchedule(schedule));
+  const formatSeasons = (seasons) => {
+    if (seasons.length > 2) {
+      return '2 more';
+    }
+    if (seasons[0][0] === 'All year') {
+      return seasons[0][0];
+    }
+    const lengthSeasons = seasons[0].length;
+
+    return `${seasons[0][0]} - ${seasons[0][lengthSeasons - 1]}`;
+  };
 
   return (
     <div
-      id="fish_tile"
-      style={style}
-      className=" inWater overflow-hidden fish__wrapper rounded-lg shadow-lg bg-white pl-2 pr-4 py-2 mb-4  grid grid-flow-row grid-cols-3 grid-rows-3 row-gap-1 col-gap-2 mt-1 "
+      className={`${
+        inWater ? 'inWater' : ''
+      } fishTile bg-white w-fisTileWMAx h-fishHTileDefault mx-2 mt-3 rounded-lg pr-3 pl-0 py-2 shadow-md hover:shadow-lg grid grid-cols-4 grid-rows-2`}
     >
-      <div className="box p-3  relative row-span-3 col-span-1 flex flex-row justify-center overflow-hidden">
-        <img
-          className="self-center"
-          src={`https://res.cloudinary.com/juliorafrecloud/image/upload/v1590362447/Fishes/Fish${id}.png`}
-          alt="Fish_Image"
-        />
-      </div>
-      <div className="box col-span-2 row-span-1 flex flex-row flex-no-wrap justify-between pt-1 ">
-        <h4
-          className={`title__fish self-start truncate text-left font-bold ${formatLongNames(
-            name
-          )}`}
-        >
-          {name}
-        </h4>
-        <div className="flex flex-row flex-no-wrap justify-start self-start overflow-hidden ">
-          <img className="w-6 h-6 self-center" src={bagBells} alt="bell" />
-          <p className="fish_price text-sm font-medium self-center">{price}</p>
+      <div className="image_flags col-span-1 row-span-2 flex flex-col flex-no-wrap justify-between items-center mr-1 ">
+        <div className="overflow-hidden flex flex-row justify-center items-center p-1">
+          <img src={`${urlFishImage}${id}.png`} alt={name} />
+        </div>
+        <div className="flagtags">
+          <div className="greenflag inline-block -mr-3 rounded-full w-4 h-4 bg-fish-accent-green self-center shadow border-2 border-solid border-white" />
         </div>
       </div>
-      <div className="box col-span-2 row-span-2 self-end pb-1 flex flex-row flex-no-wrap justify-start ">
-        <div className="fish__location flex flex-col flex-no-wrap pr-4">
-          <small className="text-xs text-gray-600">Location</small>
-          <p className="text-sm truncate font-semibold">{location}</p>
-        </div>
-        <div className="fish__schedule flex flex-col flex-no-wrap">
-          <small className="text-xs text-gray-600 truncate">
-            Schedule
-            <span className="text-red-400"> (2)</span>
-          </small>
-          <p className="text-sm truncate font-semibold">
-            {formatSchedule(schedule)}
+
+      <div className="name_price  col-span-3 row-span-1 flex flex-row flex-no-wrap justify-between items-start pt-1">
+        <div className="w-2/3">
+          <p className={`font-bold ${formatLongNames(name)} truncate`}>
+            {name}
+          </p>
+          <p className="text-xs font-semibold -mt-1 text-gray-800">
+            {schedule}
           </p>
         </div>
-        <div className=" flagtags w-full flex flex-row flex-no-wrap justify-end pt-5 ">
-          <div className="redflag inline-block -mr-2 rounded-full w-4 h-4 bg-fish-accent-red self-center shadow border-2 border-solid border-white" />
-
-          <div className="greenflag inline-block -mr-2 rounded-full w-4 h-4 bg-fish-accent-blue self-center shadow border-2 border-solid border-white" />
+        <div>
+          <p className="font-bold self-start">${price}</p>
         </div>
+      </div>
+
+      <div className="location_months col-span-3 row-span-2 flex flex-row flex-no-wrap justify-start items-start pt-1">
+        <div>
+          <p className="text-xs text-gray-600">Location</p>
+          <p
+            className={`font-bold truncate -mt-1 ${
+              location === 'Desembocadura' ? 'text-sm' : 'text-base'
+            }`}
+          >
+            {location}
+          </p>
+        </div>
+
+        {!inWater ? (
+          <div className="pl-2">
+            <p className="text-xs text-gray-600">Seasons</p>
+            <p className="font-bold text-base -mt-1">
+              {formatSeasons(seasons)}
+            </p>
+          </div>
+        ) : (
+          <div className="pl-2">
+            <p className="text-xs text-gray-600">Shadow</p>
+            <p className="font-bold text-base -mt-1">{shadow}</p>
+          </div>
+        )}
       </div>
     </div>
   );

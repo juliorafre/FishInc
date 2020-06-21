@@ -1,7 +1,7 @@
 /* eslint-disable jsx-quotes */
 import React from 'react';
 
-const Section = ({ children }) => {
+const SectionFishes = ({ children }) => {
   return (
     <section
       id="fish"
@@ -12,4 +12,4 @@ const Section = ({ children }) => {
   );
 };
 
-export default Section;
+export default SectionFishes;

@@ -28,6 +28,7 @@ module.exports = {
       },
       spacing: {
         imageFixed: '0.01rem',
+        '14': '3.5rem',
         '28': '7rem',
         '52': '15rem',
         '72': '18rem',

@@ -3,7 +3,6 @@ import React from 'react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 // Components
 import Fish from '../Fish';
-import Fish2 from '../Fish2';
 import Layout from '../../Layout/Layout';
 
 export default {
@@ -1182,7 +1181,7 @@ export const secundaryFish = () => {
   const inWater = boolean('In Water?', false);
   return (
     <Layout>
-      <Fish2
+      <Fish
         id={value.id}
         name={value.name}
         price={value.price}
