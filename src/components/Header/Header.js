@@ -45,6 +45,7 @@ const Header = ({ hemisphere, handleState, handleLag }) => {
       </div>
 
       <Flags />
+      <Clock />
     </>
   );
 };
